@@ -1,0 +1,4 @@
+# Clone read-only của tài liệu OutSystems 11, ~2 GB, có .git riêng trỏ về upstream.
+# Không vendor vào repo này. Lấy lại bằng:
+#   git clone https://github.com/OutSystems/docs-product.git docs-product
+docs-product/
