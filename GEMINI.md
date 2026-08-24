@@ -81,7 +81,7 @@ Nếu vấn đề được hỏi không có sẵn hoặc không được đề c
 
 ## 6. Knowledge Accumulation & Reuse (Lưu trữ và tái sử dụng tri thức)
 
-* **Tự động cập nhật `qa-knowledge.md`**: Sau mỗi câu hỏi kỹ thuật, chủ đề kiến trúc hoặc kiến thức giải đáp quan trọng, tự động tổng hợp và ghi nhận vào [qa-knowledge.md](file:///c:/Users/nvcuong15/Learn-OS/qa-knowledge.md).
+* **Tự động cập nhật `qa-knowledge.md`**: Sau mỗi câu hỏi kỹ thuật, chủ đề kiến trúc hoặc kiến thức giải đáp quan trọng, tự động tổng hợp và ghi nhận vào [qa-knowledge.md](file:///c:/Users/tuila/O11-Cert/O11-Cert/qa-knowledge.md).
 * **Định dạng ghi nhận**:
   - Tiêu đề câu hỏi / Ngày tháng.
   - Nền tảng (O11 / ODC).
@@ -90,4 +90,28 @@ Nếu vấn đề được hỏi không có sẵn hoặc không được đề c
   - Phần `[TƯ DUY NGOÀI NGUỒN]` (nếu có, phân biệt rõ với tài liệu chuẩn).
   - Điểm mấu chốt (Key Takeaways).
 * **Tái sử dụng làm nguồn tham khảo (Secondary Source)**:
-  - Khi người dùng hỏi các câu hỏi tiếp theo hoặc câu hỏi liên quan, có thể tra cứu và tham chiếu chéo với [qa-knowledge.md](file:///c:/Users/nvcuong15/Learn-OS/qa-knowledge.md) để kế thừa kiến thức đã học, tránh lặp lại câu hỏi đã giải quyết, và duy trì tính nhất quán.
+  - Khi người dùng hỏi các câu hỏi tiếp theo hoặc câu hỏi liên quan, có thể tra cứu và tham chiếu chéo với [qa-knowledge.md](file:///c:/Users/tuila/O11-Cert/O11-Cert/qa-knowledge.md) để kế thừa kiến thức đã học, tránh lặp lại câu hỏi đã giải quyết, và duy trì tính nhất quán.
+
+---
+
+## 7. Documentation Sync & Maintenance (Cập nhật tài liệu)
+
+Để đồng bộ và cập nhật toàn bộ tài liệu OutSystems 11 (`docs-product/`) và OutSystems ODC (`docs-odc/`) lên phiên bản mới nhất từ upstream GitHub, sử dụng script [`update-docs.ps1`](file:///c:/Users/tuila/O11-Cert/O11-Cert/update-docs.ps1):
+
+### Lệnh cập nhật:
+* **PowerShell**:
+  ```powershell
+  .\update-docs.ps1
+  # Hoặc nếu cần bypass execution policy:
+  powershell -ExecutionPolicy Bypass -File .\update-docs.ps1
+  ```
+* **CMD (Command Prompt)**:
+  ```cmd
+  powershell -ExecutionPolicy Bypass -File .\update-docs.ps1
+  ```
+* **Git Bash**:
+  ```bash
+  powershell.exe -ExecutionPolicy Bypass -File ./update-docs.ps1
+  ```
+
+Script sẽ tự động clone shallow bản mới nhất vào thư mục tạm, đồng bộ các nội dung Markdown/Images/Metadata vào workspace và loại bỏ các file thừa/rác `.git` để đảm bảo source luôn gọn gàng.

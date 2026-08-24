@@ -1,6 +1,9 @@
-# Clone read-only của tài liệu OutSystems 11, ~2 GB, có .git riêng trỏ về upstream.
-# Không vendor vào repo này. Lấy lại bằng:
-#   git clone https://github.com/OutSystems/docs-product.git docs-product
+# Clone read-only cua tai lieu OutSystems 11 va ODC (~2 GB)
+# Khong vendor vao repo nay. Lay lai bang .\update-docs.ps1
 docs-product/
 docs-odc/
 .temp_docs_sync/
+
+# OS metadata
+.DS_Store
+Thumbs.db
