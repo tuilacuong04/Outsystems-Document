@@ -2,3 +2,5 @@
 # Không vendor vào repo này. Lấy lại bằng:
 #   git clone https://github.com/OutSystems/docs-product.git docs-product
 docs-product/
+docs-odc/
+.temp_docs_sync/
