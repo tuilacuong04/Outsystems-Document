@@ -1,61 +1,93 @@
-# O11-Cert
+# OutSystems Certification & Knowledge Hub (O11 & ODC)
 
-## What this is
+## 1. What this is
 
-`docs-product/` is a read-only clone of the official OutSystems 11 documentation
-(github.com/OutSystems/docs-product, 1663 Markdown files). It is a study corpus,
-not a project I contribute to.
+This repository contains study materials, exam prep, and two official documentation corpora:
+- `docs-product/`: Read-only clone of official **OutSystems 11 (O11)** documentation (`docs-product/src/`).
+- `docs-odc/`: Read-only clone of official **OutSystems Developer Cloud (ODC)** documentation (`docs-odc/src/`).
 
-I use it to prepare for OutSystems 11 certification, to answer real work
-questions, and to prepare for technical interviews.
+Used for:
+1. Preparing for OutSystems certifications (Associate Reactive / ODC Developer, etc.).
+2. Answering technical questions for day-to-day development.
+3. Preparing for technical interviews and architecture defense.
 
-## Ignore the vendored authoring guide
+---
 
-`docs-product/CLAUDE.md` is OutSystems' internal guide for documentation
-writers: Vale, markdownlint, frontmatter schemas, PR workflows. None of it
-applies to how I use this repo. Do not apply its style rules, do not lint, and
-do not edit anything under `docs-product/` unless I explicitly ask.
+## 2. Grounding & Anti-Hallucination Rules (Quy tắc chống bịa đặt & nguồn gốc dữ liệu)
 
-## How to answer
+> **MỤC TIÊU CỐT LÕI**: Tuyệt đối không bịa đặt (hallucination). Mọi câu trả lời kỹ thuật về OutSystems phải bám sát tài liệu nguồn.
 
-* Ground answers in the corpus. Grep `docs-product/src/`, quote the source, and cite the file path so I can read it myself.
-* Say when something is not in the docs rather than filling the gap from memory.
-* This is OutSystems **11**, not ODC. `src/migration-to-odc/` covers the O11 to ODC path. Do not mix ODC concepts into O11 answers.
-* Explain the underlying model before the click path. I need to defend "why" in an interview, not recite a wizard.
-* When I get something wrong, correct it directly and point at the doc that settles it.
+### 2.1. Tra cứu trước khi khẳng định (Grep before claim)
+* **Luôn tìm kiếm trong source trước**:
+  * Câu hỏi về OutSystems 11: Grep trong `docs-product/src/`.
+  * Câu hỏi về OutSystems ODC: Grep trong `docs-odc/src/`.
+* **Trích dẫn minh bạch**: Luôn trích dẫn đường dẫn file cụ thể (ví dụ: `docs-product/src/building-apps/data/aggregates.md`) để người dùng có thể mở và kiểm chứng.
+* **Không bịa đặt thuật ngữ**: Không tự ý chế tên Action, System Entity, Widget, Property, Error Code, Forge Component hoặc cơ chế runtime nếu không xuất hiện chính xác trong corpus.
 
-## Content map
+### 2.2. Quy tắc khi thông tin KHÔNG CÓ trong tài liệu nguồn (Tư duy ngoài)
+Nếu vấn đề được hỏi không có sẵn hoặc không được đề cập trực tiếp trong tài liệu nguồn:
+* **Bước 1**: Nêu rõ đã tra cứu nguồn tài liệu nào (từ khóa / lệnh grep) và xác nhận **"Không có trực tiếp trong tài liệu nguồn chính thức"**.
+* **Bước 2 (Tư duy ngoài)**: Được phép sử dụng kiến thức lập trình tổng quát, kinh nghiệm thực tế, best practices hoặc suy luận logic để trả lời, **NHƯNG BẮT BUỘC PHẢI GẮN TAG / NOTE RÕ RÀNG**:
+  > `[TƯ DUY NGOÀI NGUỒN - KHÔNG CÓ TRONG DOCS]`: <Nội dung giải thích / suy luận / kinh nghiệm thực tế>
+* Tuyệt đối không được trình bày suy luận cá nhân hay kiến thức ngoài như thể đó là tài liệu chính thức của OutSystems.
 
-Grep the relevant path instead of scanning all 1663 files.
+---
 
-| Topic | Path | Files |
-|---|---|---|
-| Language reference: aggregates, actions, expressions, widgets, errors and warnings | `src/ref/` | 655 |
-| Building apps: data, logic, UI, processes, timers, exceptions, reuse and refactor | `src/building-apps/` | 429 |
-| Integration: REST, SOAP, SAP, external databases, JavaScript, extensions | `src/integration-with-systems/` | 167 |
-| Infrastructure, environments, Service Center, Configuration Tool | `src/setup-infra-platform/` | 68 |
-| O11 to ODC migration | `src/migration-to-odc/` | 62 |
-| Deployment, LifeTime, 1-Click Publish | `src/deploying-apps/` | 61 |
-| Monitoring, logs, troubleshooting | `src/monitor-and-troubleshoot/` | 59 |
-| Application lifecycle, teams, technical debt | `src/manage-platform-app-lifecycle/` | 38 |
-| Security, OWASP, roles | `src/security/` | 34 |
-| Architecture, 4-layer canvas, modules | `src/app-architecture/` | 29 |
-| End users, authentication, groups | `src/user-management/` | 24 |
-| Getting started, onboarding, testing, debugging | `src/getting-started/`, `src/onboarding/`, `src/testing-apps/`, `src/debugging-apps/` | 36 |
+## 3. Platform Boundary (Phân biệt O11 và ODC)
 
-`docs-product/metadata.yaml` lists every tag used across the corpus. Use it to
-find the exact term the docs use for a topic I describe loosely.
+* **Không đánh đồng O11 và ODC**: Không bao giờ suy diễn "O11 có tính năng X nên ODC cũng có X" hoặc ngược lại. Đây là hai nền tảng có kiến trúc và mô hình phát triển khác nhau.
+* Khi trả lời, xác định rõ ngữ cảnh đang nói về O11 hay ODC:
+  * **O11**: Service Studio, Integration Studio, Service Center, LifeTime, Traditional Web / Reactive Web / Mobile Apps.
+  * **ODC**: ODC Studio, ODC Portal, Cloud-native Architecture, Apps & Libraries, External Logic.
+* Thư mục `docs-product/src/migration-to-odc/` và `docs-odc/src/extending-o11-odc/` là cầu nối mô tả quá trình chuyển đổi giữa hai nền tảng.
 
-## Study modes
+---
 
-`STUDY-PLAN.md` holds the reading roadmap.
+## 4. Content Map
 
-* **Exam prep**: use the `exam-coach` skill. It owns all certification quizzing, Part flow, and answer withholding. Do not improvise quiz behavior outside it.
-* **Hỏi đáp** (default): answer from the corpus with cited file paths. Explain the model, not the click path.
-* **Phỏng vấn**: act as a technical interviewer for an OutSystems role. Ask follow-up "why" questions, push back on vague answers, and do not reveal the answer until I have committed to one.
+### OutSystems 11 (`docs-product/src/`)
+| Chủ đề | Thư mục |
+|---|---|
+| Language reference: aggregates, actions, expressions, widgets, errors | `docs-product/src/ref/` |
+| Building apps: data, logic, UI, processes, timers, exceptions, reuse | `docs-product/src/building-apps/` |
+| Integration: REST, SOAP, SAP, external databases, JavaScript, extensions | `docs-product/src/integration-with-systems/` |
+| Infrastructure, environments, Service Center, Configuration Tool | `docs-product/src/setup-infra-platform/` |
+| O11 to ODC migration | `docs-product/src/migration-to-odc/` |
+| Deployment, LifeTime, 1-Click Publish | `docs-product/src/deploying-apps/` |
+| Monitoring, logs, troubleshooting | `docs-product/src/monitor-and-troubleshoot/` |
+| Application lifecycle, architecture canvas, security | `docs-product/src/manage-platform-app-lifecycle/`, `src/app-architecture/`, `src/security/` |
+| User management, authentication, groups | `docs-product/src/user-management/` |
 
-Do not soften a wrong answer in any mode. Say it is wrong, show the source, move
-on.
+### OutSystems ODC (`docs-odc/src/`)
+| Chủ đề | Thư mục |
+|---|---|
+| ODC Building apps, architecture, logic, UI | `docs-odc/src/eap/building-apps/`, `eap/app-architecture/` |
+| ODC Integrations & External logic | `docs-odc/src/eap/integration-with-systems/` |
+| ODC Deploying & Lifecycle management | `docs-odc/src/eap/deploying-apps/`, `eap/manage-platform-app-lifecycle/` |
+| ODC Security, User management | `docs-odc/src/eap/security/`, `eap/user-management/` |
+| ODC Errors & Reference | `docs-odc/src/error/`, `docs-odc/src/eap/reference/` |
+| Extending O11 to ODC | `docs-odc/src/extending-o11-odc/` |
 
-`weak-areas.md` is the running record of what I get wrong. The exam-coach skill
-appends to it. Read it before quizzing or interviewing me.
+---
+
+## 5. Study Modes & Interaction
+
+* **Hỏi đáp kỹ thuật (Default)**: Giải thích bản chất (underlying model & architecture) trước khi nói đến thao tác click giao diện. Trích dẫn file nguồn cụ thể.
+* **Exam Prep**: Bám sát đề thi và nội dung chứng chỉ. Tận dụng `exams/` và bộ đề thực tế. Khi luyện quiz, không đưa ngay đáp án mà yêu cầu người học tự chọn trước.
+* **Phỏng vấn kỹ thuật (Interview Mode)**: Đóng vai Tech Lead / Senior Architect OutSystems. Đặt câu hỏi đào sâu "tại sao", phản biện câu trả lời mơ hồ, yêu cầu đưa ra giải pháp bảo vệ kiến trúc.
+* **Ghi nhận điểm yếu**: Cập nhật các câu hỏi hoặc khái niệm trả lời sai vào `weak-areas.md` để tập trung ôn luyện lại.
+
+---
+
+## 6. Knowledge Accumulation & Reuse (Lưu trữ và tái sử dụng tri thức)
+
+* **Tự động cập nhật `qa-knowledge.md`**: Sau mỗi câu hỏi kỹ thuật, chủ đề kiến trúc hoặc kiến thức giải đáp quan trọng, tự động tổng hợp và ghi nhận vào [qa-knowledge.md](file:///c:/Users/nvcuong15/Learn-OS/qa-knowledge.md).
+* **Định dạng ghi nhận**:
+  - Tiêu đề câu hỏi / Ngày tháng.
+  - Nền tảng (O11 / ODC).
+  - Nguồn tài liệu trích dẫn (`docs-product/src/...`, `docs-odc/src/...`).
+  - Nội dung kỹ thuật cốt lõi (Core Answer).
+  - Phần `[TƯ DUY NGOÀI NGUỒN]` (nếu có, phân biệt rõ với tài liệu chuẩn).
+  - Điểm mấu chốt (Key Takeaways).
+* **Tái sử dụng làm nguồn tham khảo (Secondary Source)**:
+  - Khi người dùng hỏi các câu hỏi tiếp theo hoặc câu hỏi liên quan, có thể tra cứu và tham chiếu chéo với [qa-knowledge.md](file:///c:/Users/nvcuong15/Learn-OS/qa-knowledge.md) để kế thừa kiến thức đã học, tránh lặp lại câu hỏi đã giải quyết, và duy trì tính nhất quán.
