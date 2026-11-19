@@ -42,37 +42,39 @@ promise to be careful, it is a required action.
 Read `exams/README.md` before touching anything in `exams/`. It classifies every
 file by certification track.
 
-**Track guard, highest priority in this section.** Every exam file currently in
-`exams/` is **Traditional Web**, not the Reactive track the user is sitting.
-Before reusing any question from them:
+**Track guard, highest priority in this section.** The user's primary target
+(expected exam: **January 2027**) is **Associate Traditional Web Developer (O11)**
+(Traditional Web track).
 
-* Check the topic against the transfer table in `exams/README.md`.
-* Topics that do not transfer (Session Variables, Web Blocks, RichWidgets, Screen Lifecycle, Themes and Styles, Personal/Public Area) are **forbidden as quiz material**. Studying them for a Reactive exam teaches wrong answers.
-* Topics that do transfer (data modeling, Aggregates and SQL, exceptions, Timers and BPT, integrations, security) may be reused, but rewrite the stem in Reactive terms and verify against the corpus first.
-* State the track of any question you reuse.
+* Primary exam files for this track:
+  * `exams/PhuVNSummary-of-Associate-Web-Developer-CertificationO11_20200328.xlsx` (17 sheets matching the 14 sub-topics and 50-question breakdown).
+  * `exams/OutSystems_Exam.xlsx` (3 full 50-question Traditional Web exams + answer key).
+* Reactive-only topics (`Client Variables`, `Client Actions`, `Data Actions`, Reactive lifecycle events `OnInitialize`/`OnReady`/`OnRender`/`OnDestroy`/`OnParametersChanged`) are **forbidden in Traditional Web quizzes** unless the user explicitly asks to switch to the Reactive track.
+* Shared O11 topics from `exams/exam-50-reactive.md` (Data Modeling, Aggregates and SQL, Exception Handling, Server Actions, Web Services, Security Roles) may be reused, provided the stem uses Traditional Web terminology and is verified against `docs-product/src/`.
+* State the source file and track of any question you reuse.
 
 They are calibration material, not authority:
 
-* When a dump's answer contradicts the corpus, the corpus wins. Say so and cite the file that settles it.
+* When a dump's answer contradicts the corpus, the corpus (`docs-product/src/`) wins. Say so and cite the file that settles it.
 * Third-party dumps carry wrong answers often enough that trusting one silently is the fastest way to learn something false.
-* `exams/exam-50-reactive.md` is the **exception to the track guard**: 50 Reactive-track questions with answers, explanations, and a topic distribution table. Prefer it over every other file in `exams/`. Grep it first.
-* Source images are at `exams/Exam_50_pages/page01..50.jpg`. Open one only when a question's diagram matters and the text description may have lost detail.
-* Those images show the correct answer and an Explanation. Read them to build questions, never show the answer when quizzing.
 
 ## 2. Target and scope filter
 
-Target: **Associate Developer (O11)**, Reactive track, 120 minutes per the
-official page. Number of questions and pass mark have **no confirmed source** for
-this exam. The 50 questions / 70% figure belongs to the retired Associate Web
-Developer exam on the Traditional track. Do not repeat it as fact for this one.
+Target: **Associate Traditional Web Developer (O11)**, Traditional Web track
+(expected exam date: **January 2027**).
+* Format: **50 multiple-choice questions**, **120 minutes**, **70% passing score (35/50)** per `exams/PhuVNSummary-of-Associate-Web-Developer-CertificationO11_20200328.xlsx` (`Overview` sheet).
 
-Core topics: data modeling, UI development, logic, screen lifecycle, modular
-architecture. `STUDY-PLAN.md` holds the corpus map per topic.
+Core categories and weights (`STUDY-PLAN.md` holds the full 8-week schedule and corpus map):
+1. **UI Design (26% — 13 questions)**: Screens & Widgets (`Table Records`, `List Records`, `Form`, `Edit Record`, `Show Record`, `Combo Box`), `Web Blocks` & Events/Notify, `RichWidgets` (`List_Navigation`, `List_SortColumn`, `Popup_Editor`), Themes/Styles/CSS precedence (`Web Block` -> `Theme` -> `Web Screen`).
+2. **Web Development in OutSystems (22% — 11 questions)**: General Development, Screen Lifecycle (`Preparation`, `Screen Action`, `Navigate` GET vs `Submit` POST vs `Ajax Submit`, `Ajax Refresh`, `Viewstate`), Security (`Anonymous`, `Registered`, `Check<Role>Role`).
+3. **Logic and Integrations (22% — 11 questions)**: Actions (`Preparation`, `Screen Action`, `Server Action`, `Function`) & Exception Handling, Input Validations (`Client & Server` vs `Server` vs `None`, `Form.Valid`), Web Services (REST/SOAP, `OnBeforeRequest`/`OnAfterResponse`).
+4. **Aggregates & SQL Queries (16% — 8 questions)**: Joins (`Only With`, `With or Without`, `With`), Filters, Sorting, `Group By`, Calculated Attributes, `Count` vs `Length`, `SQL` node.
+5. **Data Modeling (14% — 7 questions)**: Entities, Static Entities, Structures, Data Types, Relationships (`1-1`, `1-N`, `N-N`), Delete Rules (`Protect`, `Delete`, `Ignore`).
 
 Applied to everything written:
 
 * If it cannot be tested by a multiple-choice question, cut it. No build tutorials, no implementation walkthroughs.
-* Code or syntax only where the exam tests syntax or behavior: Aggregate vs Advanced SQL, expressions, Input Parameters, JavaScript node. Max 3 lines. Never a full flow, action, or module.
+* Code or syntax only where the exam tests syntax or behavior: Aggregate vs SQL, expressions, Input Parameters, CSS precedence, RichWidgets functions. Max 3 lines. Never a full flow, action, or module.
 * Prefer the distinction a question can hinge on over the description of a feature.
 
 ## 3. Response flow

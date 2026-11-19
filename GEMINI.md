@@ -94,24 +94,24 @@ Nếu vấn đề được hỏi không có sẵn hoặc không được đề c
 
 ---
 
-## 7. Documentation Sync & Maintenance (Cập nhật tài liệu)
+## 7. Documentation Sync & Persistence Across Conversations (Đồng bộ & Lưu trữ)
 
-Để đồng bộ và cập nhật toàn bộ tài liệu OutSystems 11 (`docs-product/`) và OutSystems ODC (`docs-odc/`) lên phiên bản mới nhất từ upstream GitHub, sử dụng script [`update-docs.ps1`](file:///c:/Users/tuila/O11-Cert/O11-Cert/update-docs.ps1):
+### 7.1. Đồng bộ tài liệu `docs-product/` và `docs-odc/`
+Để đồng bộ hoặc khôi phục toàn bộ tài liệu OutSystems 11 (`docs-product/`) và OutSystems ODC (`docs-odc/`):
 
-### Lệnh cập nhật:
-* **PowerShell**:
+* **Trên Linux / Cloud VM (`update-docs.sh`)**:
+  - Khi mở một **Conversation mới** trên Cloud VM, nếu chưa thấy thư mục `docs-product/` hoặc `docs-odc/`, **tự động chạy `./update-docs.sh`**. Script sẽ giải nén bản cache đã lưu sẵn trong ổ đĩa bền vững `~/.gemini/outsystems-docs-cache/outsystems-docs.tar.gz` chỉ trong vài giây mà không cần clone lại từ GitHub.
+  - Nếu muốn tải bản mới nhất từ upstream GitHub và cập nhật lại cache:
+    ```bash
+    ./update-docs.sh --remote
+    ```
+* **Trên Windows (`update-docs.ps1`)**:
   ```powershell
   .\update-docs.ps1
   # Hoặc nếu cần bypass execution policy:
   powershell -ExecutionPolicy Bypass -File .\update-docs.ps1
   ```
-* **CMD (Command Prompt)**:
-  ```cmd
-  powershell -ExecutionPolicy Bypass -File .\update-docs.ps1
-  ```
-* **Git Bash**:
-  ```bash
-  powershell.exe -ExecutionPolicy Bypass -File ./update-docs.ps1
-  ```
 
-Script sẽ tự động clone shallow bản mới nhất vào thư mục tạm, đồng bộ các nội dung Markdown/Images/Metadata vào workspace và loại bỏ các file thừa/rác `.git` để đảm bảo source luôn gọn gàng.
+### 7.2. Lưu trữ thay đổi qua Git giữa các Conversation
+Vì mỗi Conversation trên Cloud VM được khởi tạo từ bản clone mới của GitHub repository (`tuilacuong04/Outsystems-Document`), sau khi cập nhật các file tri thức hoặc lộ trình học tập (`STUDY-PLAN.md`, `qa-knowledge.md`, `weak-areas.md`, `exams/README.md`, `.agents/`), hãy **`git commit` và `git push`** lên GitHub để dữ liệu luôn được bảo toàn cho các Conversation tiếp theo.
+
